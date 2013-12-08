@@ -1,0 +1,50 @@
+{
+  "name": "connect-pushstate",
+  "description": "Connect middleware that rewrites select requests to the site/custom root, thus allowing your pushstate router to handle them",
+  "version": "0.1.0",
+  "homepage": "https://github.com/brentertz/connect-pushstate",
+  "author": {
+    "name": "Brent Ertz",
+    "email": "brent.ertz@gmail.com",
+    "url": "http://brentertz.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/brentertz/connect-pushstate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brentertz/connect-pushstate/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/brentertz/connect-pushstate/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-mocha-test": "~0.8.0",
+    "connect": "~2.11.1",
+    "chai": "~1.8.1",
+    "request": "~2.27.0"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "connect",
+    "middleware",
+    "rewrite",
+    "pushstate",
+    "routing"
+  ]
+}
