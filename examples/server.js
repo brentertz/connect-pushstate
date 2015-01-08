@@ -1,11 +1,15 @@
-var connect = require('connect'),
-  pushState = require('../lib/pushstate').pushState,
-  port = process.env.PORT || 3000;
+'use strict';
+
+var connect = require('connect');
+var morgan = require('morgan');
+var serveStatic = require('serve-static');
+var pushState = require('../index');
+var port = process.env.PORT || 3000;
 
 var app = connect()
-  .use(connect.logger('dev'))
   .use(pushState())
-  .use(connect.static('../test/fixtures/www/'))
+  .use(serveStatic('../test/fixtures/www/'))
+  .use(morgan('dev'))
   .listen(port, function() {
     console.log('Application server stated on port', port);
   });
