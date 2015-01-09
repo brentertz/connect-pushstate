@@ -77,6 +77,7 @@ describe('pushState', function() {
     var server = app.listen(3000).on('listening', function() {
       request('http://0.0.0.0:3000/api/users', function(err, res, body) {
         expect(res.statusCode).to.equal(200);
+        expect(body).to.contain('users');
         server.close(done);
       });
     });
