@@ -82,4 +82,32 @@ describe('pushState', function() {
       });
     });
   });
+
+  it('rewrites url if allow is given but not matched', function(done) {
+    var app = connect()
+      .use(pushState({ allow: '^/api' }))
+      .use(serveStatic(www));
+
+    var server = app.listen(3000).on('listening', function() {
+      request('http://0.0.0.0:3000/other/pathname', function(err, res, body) {
+        expect(res.statusCode).to.equal(200);
+        expect(body).to.contain('www/index.html');
+        server.close(done);
+      });
+    });
+  });
+
+  it('rewrites url with extension if allow is given but not matched', function(done) {
+    var app = connect()
+      .use(pushState({ allow: '^/api' }))
+      .use(serveStatic(www));
+
+    var server = app.listen(3000).on('listening', function() {
+      request('http://0.0.0.0:3000/other.csv', function(err, res, body) {
+        expect(res.statusCode).to.equal(200);
+        expect(body).to.contain('www/index.html');
+        server.close(done);
+      });
+    });
+  });
 });

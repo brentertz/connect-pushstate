@@ -14,7 +14,7 @@ module.exports = function(options) {
     var allowed = allow ? allow.test(pathname) : false;
     var hasFileExtension = !!(path.extname(pathname));
 
-    if (allowed || hasFileExtension) {
+    if (allowed || (!allow && hasFileExtension)) {
       next();
     } else {
       req.url = root;
