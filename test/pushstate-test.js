@@ -82,4 +82,21 @@ describe('pushState', function() {
       });
     });
   });
+
+  it('rewrites the request url when specified as disallowed', function(done) {
+    var app = connect()
+      .use(pushState({ disallow: '^/version' }))
+      .use(serveStatic(www))
+      .use('/version', function(req, res, next) {
+        res.end('version');
+      });
+
+    var server = app.listen(3000).on('listening', function() {
+      request('http://0.0.0.0:3000/version/1.2.3', function(err, res, body) {
+        expect(res.statusCode).to.equal(200);
+        expect(body).to.contain('www/index.html');
+        server.close(done);
+      });
+    });
+  });
 });
